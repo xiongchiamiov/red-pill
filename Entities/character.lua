@@ -18,6 +18,14 @@ local Character = Class{
             return true
          end
       end
+      for x=1, #level.map do
+         for y=1, #level.map[x] do
+            local boundingBox = level.map[x][y].boundingBox
+            if boundingBox ~= nil and self.boundingBox:collidesWith(boundingBox) then
+               return true
+            end
+         end
+      end
       
       return false
    end;

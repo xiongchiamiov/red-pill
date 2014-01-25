@@ -9,10 +9,10 @@ local filenameMapping = {
    d = { file = 'asphalt', rot = math.pi },
    D = { file = 'asphalt', rot = math.pi * 3 / 2 },
 
-   e = { file = 'greybrix', rot = 0 },
-   E = { file = 'greybrix', rot = math.pi / 2 },
-   f = { file = 'greybrix', rot = math.pi },
-   F = { file = 'greybrix', rot = math.pi * 3 / 2 },
+   e = { file = 'greybrix', rot = 0, passable = false },
+   E = { file = 'greybrix', rot = math.pi / 2, passable = false },
+   f = { file = 'greybrix', rot = math.pi, passable = false },
+   F = { file = 'greybrix', rot = math.pi * 3 / 2, passable = false },
 
    g = { file = 'sidewalk', rot = 0 },
    G = { file = 'sidewalk', rot = math.pi / 2 },
@@ -25,9 +25,18 @@ local Tile = Class{
 
    init = function(self, key, x, y)
       self.position = Vector(x + self.SIZE / 2, y + self.SIZE / 2)
-
+      
       tileMap = filenameMapping[key]
 
+      if tileMap == nil or tileMap.passable == false then
+         self.boundingBox = Collider:addRectangle(
+            self.position.x - Tile.SIZE / 2,
+            self.position.y - Tile.SIZE / 2,
+            Tile.SIZE,
+            Tile.SIZE)
+         self.boundingBox.parent = self
+      end
+      
       if tileMap == nil then
          if key ~= ' ' then
             print("WARN: no tile for key: " .. key)
