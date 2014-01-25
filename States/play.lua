@@ -1,3 +1,4 @@
+Missile = require 'Entities.missile'
 Monster = require 'Entities.monster'
 Player = require 'Entities.player'
 Tile = require 'Entities.tile'
@@ -13,6 +14,7 @@ function play:init()
    tiles = {}
    love.graphics.setBackgroundColor(255, 255, 255)
    npcs = {}
+   missiles = {}
    
    for i = 1, 20 do
       table.insert(npcs, Monster(i*80, i*35))
@@ -25,6 +27,9 @@ function play:update(dt)
    for i, npc in ipairs(npcs) do
       npc:update(dt)
    end
+   for i, missile in ipairs(missiles) do
+      missile:update(dt)
+   end
    
    player:update(dt)
 end
@@ -35,6 +40,9 @@ function play:draw()
    end
    for i, npc in ipairs(npcs) do
       npc:draw()
+   end
+   for i, missile in ipairs(missiles) do
+      missile:draw()
    end
    
    player:draw(time)
@@ -64,6 +72,15 @@ function play:keyreleased(key)
       player.direction.x = 0
    elseif key == 'a' then
       player.direction.x = 0
+   end
+end
+
+-- x: Mouse x position.
+-- y: Mouse y position.
+-- button: http://www.love2d.org/wiki/MouseConstant
+function play:mousepressed(x, y, button)
+   if button == "l" then
+      table.insert(missiles, player:fire())
    end
 end
 
