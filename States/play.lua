@@ -44,6 +44,7 @@ function play:draw()
    for i, character in ipairs(characters) do
       character:draw()
    end
+
    for i, missile in ipairs(missiles) do
       missile:draw()
    end

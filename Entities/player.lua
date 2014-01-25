@@ -13,13 +13,13 @@ local Player = Class{
    end;
 
    draw = function(self, time)
-      love.graphics.draw(self.image, self.position.x, self.position.y, 0, 1, 1, 15, 30)
+      love.graphics.draw(self.image, self.position.x - Tile.SIZE / 2, self.position.y - Tile.SIZE, 0, 1, 1, Tile.SIZE / 2, Tile.SIZE)
    end;
    
    fire = function(self, targetX, targetY)
       local target = Vector(targetX, targetY)
       local direction = target - self.position
-      return Missile(self.position.x, self.position.y, direction)
+      return Missile(self.position.x, self.position.y - Tile.SIZE, direction)
    end;
    MOVE_DISTANCE = 1;
 }
