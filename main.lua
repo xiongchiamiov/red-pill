@@ -1,14 +1,12 @@
+Camera = require 'hump.camera'
 Class = require 'hump.class'
+Gamestate = require 'hump.gamestate'
 Vector = require 'hump.vector'
 
-Player = require 'Entities/player'
+play = require 'States.play'
 
 function love.load()
-   player = Player()
-end
-
-function love.draw()
-   love.graphics.print('hai~', 400, 300)
-   player:draw(time)
+   Gamestate.registerEvents()
+   Gamestate.switch(play)
 end
 
