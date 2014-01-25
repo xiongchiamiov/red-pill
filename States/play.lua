@@ -86,7 +86,7 @@ end
 -- button: http://www.love2d.org/wiki/MouseConstant
 function play:mousepressed(x, y, button)
    if button == "l" then
-      table.insert(missiles, player:fire())
+      table.insert(missiles, player:fire(x, y))
    end
 end
 

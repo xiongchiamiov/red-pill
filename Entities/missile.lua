@@ -1,11 +1,11 @@
 local Missile = Class{
-   init = function(self, x, y)
+   init = function(self, x, y, direction)
       self.position = Vector(x, y)
+      self.direction = direction:normalized()
    end;
    
    update = function(self, dt)
-      self.position.x = self.position.x + (math.random(-1, 1) * Player.MOVE_DISTANCE)
-      self.position.y = self.position.y + (math.random(-1, 1) * Player.MOVE_DISTANCE)
+      self.position = self.position + self.direction
    end;
 
    draw = function(self, time)

@@ -14,8 +14,10 @@ local Player = Class{
       love.graphics.draw(self.image, self.position.x, self.position.y)
    end;
    
-   fire = function(self)
-      return Missile(0, 0)
+   fire = function(self, targetX, targetY)
+      local target = Vector(targetX, targetY)
+      local direction = target - self.position
+      return Missile(self.position.x, self.position.y, direction)
    end;
    MOVE_DISTANCE = 1;
 }
