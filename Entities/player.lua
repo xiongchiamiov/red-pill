@@ -12,12 +12,7 @@ local Player = Class{
       self.position = Vector(x, y)
       self.image = love.graphics.newImage('Assets/player.png')
       self.direction = Vector(0, 0) -- Start off standing still.
-
-      self.boundingBox = Collider:addRectangle(
-         self.position.x - Tile.SIZE / 2,
-         self.position.y - Tile.SIZE / 2,
-         Tile.SIZE,
-         Tile.SIZE)
+      self:addBoundingBox()
 
       Player.player = self
    end;

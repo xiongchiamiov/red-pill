@@ -3,11 +3,7 @@ local Monster = Class{
    init = function(self, x, y)
       self.position = Vector(x, y)
       self.image = love.graphics.newImage('Assets/monster11.png')
-      self.boundingBox = Collider:addRectangle(
-         self.position.x - Tile.SIZE / 2,
-         self.position.y - Tile.SIZE / 2,
-         Tile.SIZE,
-         Tile.SIZE)
+      self:addBoundingBox()
    end;
    
    update = function(self, dt)
