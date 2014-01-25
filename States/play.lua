@@ -32,6 +32,10 @@ function play:update(dt)
    for i, missile in ipairs(missiles) do
       missile:update(dt)
    end
+   
+   table.sort(characters, function(alice, bob)
+      return alice.position.y < bob.position.y
+   end)
 end
 
 function play:draw()
