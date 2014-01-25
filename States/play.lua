@@ -104,7 +104,6 @@ function play:mousepressed(x, y, button)
 end
 
 function collision_start(dt, shapeA, shapeB, mtv_x, mtv_y)
-   print(string.format("Colliding: mtv = (%s, %s)", mtv_x, mtv_y))
 end
 
 function collision_stop(dt, shapeA, shapeB)
