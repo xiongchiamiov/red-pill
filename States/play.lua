@@ -19,6 +19,8 @@ function play:init()
    for i = 1, 20 do
       table.insert(npcs, Monster(i*80, i*35))
    end
+
+   camera:zoom(2)
 end
 
 function play:update(dt)
@@ -35,6 +37,11 @@ function play:update(dt)
 end
 
 function play:draw()
+   local dx, dy = player.position.x - camera.x, player.position.y - camera.y
+
+   camera:attach()
+   camera:move(dx / 2, dy / 2)
+
    level:draw()
    for i, npc in ipairs(npcs) do
       npc:draw()
@@ -45,8 +52,7 @@ function play:draw()
 
    player:draw(time)
 
-   local dx, dy = player.position.x - camera.x, player.position.y - camera.y
-   camera:move(dx / 2, dy / 2)
+   camera:detach()
 end
 
 function play:keypressed(key)
