@@ -7,6 +7,7 @@ local Player = Class{
    draw = function(self, time)
       love.graphics.draw(self.image, self.position.x, self.position.y)
    end;
+   MOVE_DISTANCE = 1;
 }
 
 return Player

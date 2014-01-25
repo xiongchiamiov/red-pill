@@ -5,6 +5,8 @@ Tile = require 'Entities.tile'
 local play = {}
 
 function play:init()
+   time = 0
+
    player = Player()
    world = Vector(500, 500)
    camera = Camera(player.position.x, player.position.y)
@@ -14,6 +16,14 @@ function play:init()
    
    for i = 1, 20 do
       table.insert(npcs, Monster(i*80, i*35))
+   end
+end
+
+function play:update(dt)
+   time = time + dt
+   
+   for i, npc in ipairs(npcs) do
+      npc:update(dt)
    end
 end
 
@@ -33,13 +43,13 @@ end
 
 function play:keypressed(key)
    if key == 'w' then
-      player.position.y = player.position.y - Tile.SIZE
+      player.position.y = player.position.y - Player.MOVE_DISTANCE
    elseif key == 's' then
-      player.position.y = player.position.y + Tile.SIZE
+      player.position.y = player.position.y + Player.MOVE_DISTANCE
    elseif key == 'd' then
-      player.position.x = player.position.x + Tile.SIZE
+      player.position.x = player.position.x + Player.MOVE_DISTANCE
    elseif key == 'a' then
-      player.position.x = player.position.x - Tile.SIZE
+      player.position.x = player.position.x - Player.MOVE_DISTANCE
    end
 end
 
