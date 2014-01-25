@@ -46,11 +46,12 @@ function play:draw()
    for i, npc in ipairs(npcs) do
       npc:draw()
    end
+
+   player:draw(time)
+
    for i, missile in ipairs(missiles) do
       missile:draw()
    end
-
-   player:draw(time)
 
    camera:detach()
 end
