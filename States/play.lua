@@ -8,12 +8,15 @@ Level = require 'Entities.level'
 
 local play = {}
 
-function play:init()
+function play:enter()
    time = 0
 
    -- Loading...
    Collider = HardonCollider(100, collision_start, collision_stop)
    world = Vector(500, 500)
+   -- Set player to nil just in case we're loading back in. Level constructor
+   -- will make Player.player again
+   Player.player = nil
    level = Level("demo")
    player = Player.player
    characters = level.characters
