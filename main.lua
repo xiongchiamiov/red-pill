@@ -4,6 +4,7 @@ Gamestate = require 'hump.gamestate'
 Vector = require 'hump.vector'
 
 play = require 'States.play'
+gameover = require 'States.gameover'
 
 function love.load()
    Gamestate.registerEvents()

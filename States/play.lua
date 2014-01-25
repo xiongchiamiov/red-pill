@@ -33,6 +33,9 @@ function play:update(dt)
       character:update(dt)
       if character.health <= 0 then
          table.remove(characters, i)
+         if character == player then
+            Gamestate.switch(gameover)
+         end
       end
    end
    for i, missile in ipairs(missiles) do
