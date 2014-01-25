@@ -18,9 +18,7 @@ local Player = Class{
    end;
    
    update = function(self, dt)
-      player.position.x = player.position.x + player.direction.x
-      player.position.y = player.position.y + player.direction.y
-      self.boundingBox:moveTo(self.position.x, self.position.y)
+      self:move(player.direction.x, player.direction.y)
    end;
 
    fire = function(self, targetX, targetY)
