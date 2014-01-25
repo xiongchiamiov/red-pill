@@ -13,11 +13,11 @@ function play:init()
    camera = Camera(player.position.x, player.position.y)
    level = Level("demo")
    love.graphics.setBackgroundColor(255, 255, 255)
-   npcs = {}
+   characters = {player}
    missiles = {}
 
    for i = 1, 20 do
-      table.insert(npcs, Monster(i*80, i*35))
+      table.insert(characters, Monster(i*80, i*35))
    end
 
    camera:zoom(2)
@@ -26,14 +26,12 @@ end
 function play:update(dt)
    time = time + dt
    
-   for i, npc in ipairs(npcs) do
-      npc:update(dt)
+   for i, character in ipairs(characters) do
+      character:update(dt)
    end
    for i, missile in ipairs(missiles) do
       missile:update(dt)
    end
-   
-   player:update(dt)
 end
 
 function play:draw()
@@ -43,14 +41,12 @@ function play:draw()
    camera:move(dx / 2, dy / 2)
 
    level:draw()
-   for i, npc in ipairs(npcs) do
-      npc:draw()
+   for i, character in ipairs(characters) do
+      character:draw()
    end
    for i, missile in ipairs(missiles) do
       missile:draw()
    end
-
-   player:draw(time)
 
    camera:detach()
 end
