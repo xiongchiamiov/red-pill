@@ -28,7 +28,7 @@ local Player = Class{
       local direction = target - self.position
       return Missile(self.position.x, self.position.y - Tile.SIZE, direction)
    end;
-   MOVE_DISTANCE = 1;
+   MOVE_DISTANCE = 4;
    player = nil;
 }
 

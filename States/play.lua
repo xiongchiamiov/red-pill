@@ -21,7 +21,7 @@ function play:init()
 
    -- Ready!
    camera = Camera(player.position.x, player.position.y)
-   love.graphics.setBackgroundColor(255, 255, 255)
+   love.graphics.setBackgroundColor(0, 0, 0)
 
    camera:zoom(2)
 end
