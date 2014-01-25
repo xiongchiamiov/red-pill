@@ -20,6 +20,15 @@ local Player = Class{
    
    update = function(self, dt)
       self:move(player.direction.x, player.direction.y)
+      self:checkMonsters()
+   end;
+   
+   checkMonsters = function(self)
+      for i, character in ipairs(characters) do
+         if self.boundingBox:collidesWith(character.boundingBox) then
+            self.health = self.health - character.damage
+         end
+      end
    end;
 
    fire = function(self, targetX, targetY)

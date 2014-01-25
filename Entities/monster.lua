@@ -5,6 +5,7 @@ local Monster = Class{
       self.image = love.graphics.newImage('Assets/monster11.png')
       self:addBoundingBox()
       self.health = 3
+      self.damage = 1
    end;
    
    update = function(self, dt)
