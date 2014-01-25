@@ -58,6 +58,8 @@ function play:keypressed(key)
       player.direction.x = Player.MOVE_DISTANCE
    elseif key == 'a' then
       player.direction.x = -Player.MOVE_DISTANCE
+   elseif key == 'q' then
+       love.event.push('quit')
    end
 end
 
