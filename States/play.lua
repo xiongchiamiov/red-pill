@@ -25,6 +25,8 @@ function play:update(dt)
    for i, npc in ipairs(npcs) do
       npc:update(dt)
    end
+   
+   player:update(dt)
 end
 
 function play:draw()
@@ -43,13 +45,13 @@ end
 
 function play:keypressed(key)
    if key == 'w' then
-      player.position.y = player.position.y - Player.MOVE_DISTANCE
+      player.direction = Vector(0, -Player.MOVE_DISTANCE)
    elseif key == 's' then
-      player.position.y = player.position.y + Player.MOVE_DISTANCE
+      player.direction = Vector(0, Player.MOVE_DISTANCE)
    elseif key == 'd' then
-      player.position.x = player.position.x + Player.MOVE_DISTANCE
+      player.direction = Vector(Player.MOVE_DISTANCE, 0)
    elseif key == 'a' then
-      player.position.x = player.position.x - Player.MOVE_DISTANCE
+      player.direction = Vector(-Player.MOVE_DISTANCE, 0)
    end
 end
 
