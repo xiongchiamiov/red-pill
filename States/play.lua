@@ -8,6 +8,7 @@ function play:init()
    world = Vector(500, 500)
    camera = Camera(player.position.x, player.position.y)
    tiles = {}
+   love.graphics.setBackgroundColor(255, 255, 255)
 end
 
 function play:draw()
