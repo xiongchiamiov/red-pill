@@ -4,7 +4,7 @@ local Character = Class{
          self.position.x - Tile.SIZE / 2,
          self.position.y - Tile.SIZE / 2,
          Tile.SIZE,
-         Tile.SIZE)
+         Tile.SIZE / 2)
       self.boundingBox.parent = self
    end;
 
