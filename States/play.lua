@@ -57,13 +57,13 @@ end
 
 function play:keypressed(key)
    if key == 'w' then
-      player.direction.y = -Player.MOVE_DISTANCE
+      player.direction.y = player.direction.y - Player.MOVE_DISTANCE
    elseif key == 's' then
-      player.direction.y = Player.MOVE_DISTANCE
+      player.direction.y = player.direction.y + Player.MOVE_DISTANCE
    elseif key == 'd' then
-      player.direction.x = Player.MOVE_DISTANCE
+      player.direction.x = player.direction.x + Player.MOVE_DISTANCE
    elseif key == 'a' then
-      player.direction.x = -Player.MOVE_DISTANCE
+      player.direction.x = player.direction.x - Player.MOVE_DISTANCE
    elseif key == 'q' then
        love.event.push('quit')
    end
@@ -71,13 +71,13 @@ end
 
 function play:keyreleased(key)
    if key == 'w' then
-      player.direction.y = 0
+      player.direction.y = player.direction.y + Player.MOVE_DISTANCE
    elseif key == 's' then
-      player.direction.y = 0
+      player.direction.y = player.direction.y - Player.MOVE_DISTANCE
    elseif key == 'd' then
-      player.direction.x = 0
+      player.direction.x = player.direction.x - Player.MOVE_DISTANCE
    elseif key == 'a' then
-      player.direction.x = 0
+      player.direction.x = player.direction.x + Player.MOVE_DISTANCE
    end
 end
 
