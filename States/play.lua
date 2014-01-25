@@ -33,13 +33,13 @@ end
 
 function play:keypressed(key)
    if key == 'w' then
-      player.position.y = player.position.y - 100
+      player.position.y = player.position.y - Tile.SIZE
    elseif key == 's' then
-      player.position.y = player.position.y + 100
+      player.position.y = player.position.y + Tile.SIZE
    elseif key == 'd' then
-      player.position.x = player.position.x + 100
+      player.position.x = player.position.x + Tile.SIZE
    elseif key == 'a' then
-      player.position.x = player.position.x - 100
+      player.position.x = player.position.x - Tile.SIZE
    end
 end
 

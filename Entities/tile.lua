@@ -12,6 +12,7 @@ local Tile = Class{
    draw = function(self, time)
       love.graphics.draw(self.image, self.position.x, self.position.y)
    end;
+   SIZE = 30;
 }
 
 return Tile
