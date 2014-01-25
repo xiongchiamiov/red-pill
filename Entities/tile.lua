@@ -1,12 +1,23 @@
 local filenameMapping = {
    a = { file = 'double-yellow', rot = 0 },
-   A = { file = 'double-yellow', rot = math.pi }, -- different because vertical (temp?)
-   b = { file = 'asphalt', rot = 0 },
-   B = { file = 'asphalt', rot = math.pi / 2 },
-   c = { file = 'greybrix', rot = 0 },
-   C = { file = 'greybrix', rot = math.pi / 2 },
-   d = { file = 'sidewalk', rot = 0 },
-   D = { file = 'sidewalk', rot = math.pi },
+   A = { file = 'double-yellow', rot = math.pi / 2 },
+   b = { file = 'double-yellow', rot = math.pi },
+   B = { file = 'double-yellow', rot = math.pi * 3 / 2 },
+
+   c = { file = 'asphalt', rot = 0 },
+   C = { file = 'asphalt', rot = math.pi / 3 },
+   d = { file = 'asphalt', rot = math.pi },
+   D = { file = 'asphalt', rot = math.pi * 3 / 2 },
+
+   e = { file = 'greybrix', rot = 0 },
+   E = { file = 'greybrix', rot = math.pi / 2 },
+   f = { file = 'greybrix', rot = math.pi },
+   F = { file = 'greybrix', rot = math.pi * 3 / 2 },
+
+   g = { file = 'sidewalk', rot = 0 },
+   G = { file = 'sidewalk', rot = math.pi / 2 },
+   h = { file = 'sidewalk', rot = math.pi },
+   H = { file = 'sidewalk', rot = math.pi * 3 / 2 },
 }
 
 local Tile = Class{
