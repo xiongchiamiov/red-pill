@@ -55,5 +55,11 @@ function play:keypressed(key)
    end
 end
 
+function play:keyreleased(key)
+   if key == 'w' or key == 's' or key == 'd' or key == 'a' then
+      player.direction = Vector(0, 0)
+   end
+end
+
 return play
 
