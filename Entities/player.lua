@@ -1,18 +1,24 @@
 Tile = require 'Entities.tile'
 
 local Player = Class{
-   init = function(self)
+   init = function(self, x, y)
+      if self.player then
+         print("ERR: player already created!!")
+      end
       -- self.position is hardcoded. What we really want is something passed
       -- in from the level that says the player's starting position (and
       -- that can be fairly easily done)
-      self.position = Vector(13 * Tile.SIZE, 7 * Tile.SIZE)
+      self.position = Vector(x, y)
       self.image = love.graphics.newImage('Assets/player.png')
       self.direction = Vector(0, 0) -- Start off standing still.
+
       self.boundingBox = Collider:addRectangle(
          self.position.x - Tile.SIZE / 2,
          self.position.y - Tile.SIZE / 2,
          Tile.SIZE,
          Tile.SIZE)
+
+      Player.player = self
    end;
    
    update = function(self, dt)
@@ -31,6 +37,7 @@ local Player = Class{
       return Missile(self.position.x, self.position.y - Tile.SIZE, direction)
    end;
    MOVE_DISTANCE = 1;
+   player = nil;
 }
 
 return Player

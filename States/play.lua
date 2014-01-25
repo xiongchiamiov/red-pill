@@ -9,18 +9,17 @@ local play = {}
 function play:init()
    time = 0
 
+   -- Loading...
    Collider = HardonCollider(100, collision_start, collision_stop)
-   player = Player()
    world = Vector(500, 500)
-   camera = Camera(player.position.x, player.position.y)
    level = Level("demo")
-   love.graphics.setBackgroundColor(255, 255, 255)
-   characters = {player}
+   player = Player.player
+   characters = level.characters
    missiles = {}
 
-   for i = 1, 20 do
-      table.insert(characters, Monster(i*80, i*35))
-   end
+   -- Ready!
+   camera = Camera(player.position.x, player.position.y)
+   love.graphics.setBackgroundColor(255, 255, 255)
 
    camera:zoom(2)
 end
