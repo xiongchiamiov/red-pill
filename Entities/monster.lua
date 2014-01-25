@@ -1,3 +1,6 @@
+Player = require 'Entities.player'
+Tile = require 'Entities.tile'
+
 local Monster = Class{
    __includes = {Character};
    init = function(self, x, y)
@@ -9,8 +12,13 @@ local Monster = Class{
    end;
    
    update = function(self, dt)
-      self:move(math.random(-1, 1) * Player.MOVE_DISTANCE, math.random(-1, 1) * Player.MOVE_DISTANCE)
       self:checkMissiles()
+
+      local vecToPlayer = Player.player.position - self.position
+      if vecToPlayer:len() <= Monster.VISION_DISTANCE then
+         vecToPlayer = vecToPlayer:normalize_inplace() * Monster.MOVE_DISTANCE * dt
+         self:move(vecToPlayer.x, vecToPlayer.y)
+      end
    end;
    
    checkMissiles = function(self)
@@ -21,6 +29,8 @@ local Monster = Class{
          end
       end
    end;
+   VISION_DISTANCE = 3 * Tile.SIZE;
+   MOVE_DISTANCE = 2 * Tile.SIZE;
 }
 
 return Monster
