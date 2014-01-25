@@ -16,5 +16,17 @@ function play:draw()
    camera:move(dx / 2, dy / 2)
 end
 
+function play:keypressed(key)
+   if key == 'w' then
+      player.position.y = player.position.y - 100
+   elseif key == 's' then
+      player.position.y = player.position.y + 100
+   elseif key == 'd' then
+      player.position.x = player.position.x + 100
+   elseif key == 'a' then
+      player.position.x = player.position.x - 100
+   end
+end
+
 return play
 
