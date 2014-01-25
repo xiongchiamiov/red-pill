@@ -45,19 +45,25 @@ end
 
 function play:keypressed(key)
    if key == 'w' then
-      player.direction = Vector(0, -Player.MOVE_DISTANCE)
+      player.direction.y = -Player.MOVE_DISTANCE
    elseif key == 's' then
-      player.direction = Vector(0, Player.MOVE_DISTANCE)
+      player.direction.y = Player.MOVE_DISTANCE
    elseif key == 'd' then
-      player.direction = Vector(Player.MOVE_DISTANCE, 0)
+      player.direction.x = Player.MOVE_DISTANCE
    elseif key == 'a' then
-      player.direction = Vector(-Player.MOVE_DISTANCE, 0)
+      player.direction.x = -Player.MOVE_DISTANCE
    end
 end
 
 function play:keyreleased(key)
-   if key == 'w' or key == 's' or key == 'd' or key == 'a' then
-      player.direction = Vector(0, 0)
+   if key == 'w' then
+      player.direction.y = 0
+   elseif key == 's' then
+      player.direction.y = 0
+   elseif key == 'd' then
+      player.direction.x = 0
+   elseif key == 'a' then
+      player.direction.x = 0
    end
 end
 
