@@ -31,6 +31,9 @@ function play:update(dt)
    
    for i, character in ipairs(characters) do
       character:update(dt)
+      if character.health <= 0 then
+         table.remove(characters, i)
+      end
    end
    for i, missile in ipairs(missiles) do
       missile:update(dt)

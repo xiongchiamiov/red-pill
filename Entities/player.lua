@@ -13,6 +13,7 @@ local Player = Class{
       self.image = love.graphics.newImage('Assets/player.png')
       self.direction = Vector(0, 0) -- Start off standing still.
       self:addBoundingBox()
+      self.health = 10
 
       Player.player = self
    end;
