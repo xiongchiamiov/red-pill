@@ -85,6 +85,10 @@ end
 -- y: Mouse y position.
 -- button: http://www.love2d.org/wiki/MouseConstant
 function play:mousepressed(x, y, button)
+   -- The camera screws things up, so let's ignore where Love thinks we're
+   -- clicking.
+   x, y = camera:mousepos()
+   
    if button == "l" then
       table.insert(missiles, player:fire(x, y))
    end
