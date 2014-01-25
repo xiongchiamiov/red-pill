@@ -1,3 +1,4 @@
+HardonCollider = require 'HardonCollider'
 Missile = require 'Entities.missile'
 Monster = require 'Entities.monster'
 Player = require 'Entities.player'
@@ -8,6 +9,7 @@ local play = {}
 function play:init()
    time = 0
 
+   Collider = HardonCollider(100, collision_start, collision_stop)
    player = Player()
    world = Vector(500, 500)
    camera = Camera(player.position.x, player.position.y)
@@ -36,6 +38,8 @@ function play:update(dt)
    table.sort(characters, function(alice, bob)
       return alice.position.y < bob.position.y
    end)
+   
+   Collider:update(dt)
 end
 
 function play:draw()
@@ -93,6 +97,13 @@ function play:mousepressed(x, y, button)
    if button == "l" then
       table.insert(missiles, player:fire(x, y))
    end
+end
+
+function collision_start(dt, shapeA, shapeB, mtv_x, mtv_y)
+   print(string.format("Colliding: mtv = (%s, %s)", mtv_x, mtv_y))
+end
+
+function collision_stop(dt, shapeA, shapeB)
 end
 
 return play
