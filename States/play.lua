@@ -9,7 +9,6 @@ function play:init()
 end
 
 function play:draw()
-   love.graphics.print('hai~', 400, 300)
    player:draw(time)
    
    local dx, dy = player.position.x - camera.x, player.position.y - camera.y
