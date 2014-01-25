@@ -1,3 +1,4 @@
+Monster = require 'Entities.monster'
 Player = require 'Entities.player'
 Tile = require 'Entities.tile'
 
@@ -9,14 +10,22 @@ function play:init()
    camera = Camera(player.position.x, player.position.y)
    tiles = {}
    love.graphics.setBackgroundColor(255, 255, 255)
+   npcs = {}
+   
+   for i = 1, 20 do
+      table.insert(npcs, Monster(i*80, i*35))
+   end
 end
 
 function play:draw()
-   player:draw(time)
-   
    for i, tile in ipairs(tiles) do
       tile:draw()
    end
+   for i, npc in ipairs(npcs) do
+      npc:draw()
+   end
+   
+   player:draw(time)
    
    local dx, dy = player.position.x - camera.x, player.position.y - camera.y
    camera:move(dx / 2, dy / 2)
