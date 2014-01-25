@@ -13,7 +13,7 @@ local Missile = Class{
       r, g, b, a = love.graphics.getColor()
       
       love.graphics.setColor(255, 187, 28, 255) -- Random orange.
-      love.graphics.circle('fill', self.position.x, self.position.y, 50, 100)
+      love.graphics.circle('fill', self.position.x, self.position.y, 10, 100)
       
       love.graphics.setColor(r, g, b, a)
    end;
