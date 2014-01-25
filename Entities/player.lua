@@ -1,6 +1,8 @@
+Tile = require 'Entities.tile'
+
 local Player = Class{
    init = function(self)
-      self.position = Vector(400, 400)
+      self.position = Vector(13 * Tile.SIZE, 7 * Tile.SIZE)
       self.image = love.graphics.newImage('Assets/player.png')
       self.direction = Vector(0, 0) -- Start off standing still.
    end;
@@ -11,7 +13,7 @@ local Player = Class{
    end;
 
    draw = function(self, time)
-      love.graphics.draw(self.image, self.position.x, self.position.y)
+      love.graphics.draw(self.image, self.position.x, self.position.y, 0, 1, 1, 15, 30)
    end;
    
    fire = function(self, targetX, targetY)
