@@ -1,6 +1,7 @@
 Tile = require 'Entities.tile'
 
 local Player = Class{
+   __includes = {Character};
    init = function(self, x, y)
       if self.player then
          print("ERR: player already created!!")
@@ -27,10 +28,6 @@ local Player = Class{
       self.boundingBox:moveTo(self.position.x, self.position.y)
    end;
 
-   draw = function(self, time)
-      love.graphics.draw(self.image, self.position.x - Tile.SIZE / 2, self.position.y - Tile.SIZE, 0, 1, 1, Tile.SIZE / 2, Tile.SIZE)
-   end;
-   
    fire = function(self, targetX, targetY)
       local target = Vector(targetX, targetY)
       local direction = target - self.position

@@ -1,4 +1,6 @@
 HardonCollider = require 'HardonCollider'
+
+Character = require 'Entities.character'
 Missile = require 'Entities.missile'
 Monster = require 'Entities.monster'
 Player = require 'Entities.player'
