@@ -49,7 +49,10 @@ local Character = Class{
       if self:anyCollisions() then
          self.position = previousPosition
          self.boundingBox:moveTo(previousPosition.x, previousPosition.y)
+         return false
       end
+      
+      return true
    end;
    HEIGHT = 2 * Tile.SIZE;
    WIDTH = Tile.SIZE;

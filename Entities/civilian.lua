@@ -16,10 +16,11 @@ local Civilian = Class{
 		
 		local movementDirection = self.destination - self.position
 		local newLocation = movementDirection:normalized() * self.MOVE_DISTANCE * dt
-		if math.abs(movementDirection.x) < 2 and math.abs(movementDirection.y) < 2 then
+		local movedSuccessfully = self:move(newLocation.x, newLocation.y)
+		if (math.abs(movementDirection.x) < 2 and math.abs(movementDirection.y) < 2)
+		or not movedSuccessfully then
 			self.destination = self:randomNearbyPoint()
 		end
-		self:move(newLocation.x, newLocation.y)
    end;
    
    checkMissiles = function(self)
