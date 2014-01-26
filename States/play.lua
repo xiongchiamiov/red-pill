@@ -38,8 +38,8 @@ function play:update(dt)
    time = time + dt
    
    redPillEffectiveness = redPillEffectiveness - dt
-   if redPillEffectiveness < 0 then
-      redPillEffectiveness = 0
+   if redPillEffectiveness < 1 then
+      redPillEffectiveness = 1
    end
    
    for i, character in ipairs(characters) do
