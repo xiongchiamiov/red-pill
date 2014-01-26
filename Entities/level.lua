@@ -5,7 +5,9 @@ local Level = Class{
       "demo",
       "1"
    };
-   init = function(self, mapName)
+   init = function(self, mapIndex)
+      mapName = self.MAP_NAMES[mapIndex]
+
       -- Pull in the .map file info
       self.map = {}
       local lineNum = 0

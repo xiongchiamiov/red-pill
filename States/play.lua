@@ -31,7 +31,7 @@ function play:enter()
    -- Set player to nil just in case we're loading back in. Level constructor
    -- will make Player.player again
    Player.player = nil
-   level = Level("demo")
+   level = Level(1)
    player = Player.player
    characters = level.characters
    texts = level.texts
