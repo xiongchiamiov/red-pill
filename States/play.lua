@@ -9,6 +9,11 @@ Level = require 'Entities.level'
 
 local play = {}
 
+-- Doesn't contain all button states, just the ones we need (like LMB)
+local buttonPressing = {
+   lmb = false
+}
+
 DEBUG = false
 MAX_PILL_EFFECTIVENESS = 11
 
@@ -36,7 +41,18 @@ end
 
 function play:update(dt)
    time = time + dt
-   
+
+   -- Fire missiles if possible and LMB is being held
+   if buttonPressing.lmb == true then
+      -- The camera screws things up, so let's ignore where Love thinks we're
+      -- clicking.
+      local x, y = camera:mousepos()
+      m = player:fire(x, y)
+      if m ~= nil then
+         table.insert(missiles, m)
+      end
+   end
+
    redPillEffectiveness = redPillEffectiveness - dt
    if redPillEffectiveness < 1 then
       redPillEffectiveness = 1
@@ -110,15 +126,14 @@ end
 -- y: Mouse y position.
 -- button: http://www.love2d.org/wiki/MouseConstant
 function play:mousepressed(x, y, button)
-   -- The camera screws things up, so let's ignore where Love thinks we're
-   -- clicking.
-   x, y = camera:mousepos()
-   
    if button == "l" then
-      m = player:fire(x, y)
-      if m ~= nil then
-         table.insert(missiles, m)
-      end
+      buttonPressing.lmb = true
+   end
+end
+
+function play:mousereleased(x, y, button)
+   if button == "l" then
+      buttonPressing.lmb = false
    end
 end
 
