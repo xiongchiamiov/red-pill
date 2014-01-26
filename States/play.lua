@@ -9,6 +9,8 @@ Pill = require 'Entities.pill'
 Player = require 'Entities.player'
 Level = require 'Entities.level'
 
+drawSanityMeter = require 'UI.sanityMeter'
+
 local play = {}
 
 -- Doesn't contain all button states, just the ones we need (like LMB)
@@ -96,6 +98,9 @@ function play:draw()
    end
 
    camera:detach()
+
+   -- Draw UI elements here
+   drawSanityMeter()
 end
 
 function play:keypressed(key)

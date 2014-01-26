@@ -1,6 +1,8 @@
 Tile = require 'Entities.tile'
 Fireball = require 'Entities.Weapons.fireball'
 
+local sanityDirection = -1
+
 local Player = Class{
    __includes = {Character};
    init = function(self, x, y)
@@ -12,12 +14,25 @@ local Player = Class{
       self.direction = Vector(0, 0) -- Start off standing still.
       self:addBoundingBox()
       self.health = 10
+      self.sanity = 110
       self.abilities = { fireball = { class = Fireball, level = 1, lastFired = -10 } }
 
       Player.player = self
    end;
    
    update = function(self, dt)
+      if self.sanity < 0 and sanityDirection == -1 then
+         self.sanity = 0
+         sanityDirection = 1
+      end
+
+      if self.sanity > 110 and sanityDirection == 1 then
+         self.sanity = 110
+         sanityDirection = -1
+      end
+
+      self.sanity = self.sanity + dt * 10 * sanityDirection
+
       self:move(player.direction.x, player.direction.y)
       self:checkCollisions()
    end;
