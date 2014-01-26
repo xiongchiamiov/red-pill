@@ -18,6 +18,28 @@ local filenameMapping = {
    G = { file = 'sidewalk', rot = math.pi / 2 },
    h = { file = 'sidewalk', rot = math.pi },
    H = { file = 'sidewalk', rot = math.pi * 3 / 2 },
+
+   i = { file = 'subway_walk1', rot = 0 },
+   I = { file = 'subway_walk1', rot = math.pi },
+
+   j = { file = 'subway_walk2', rot = 0 },
+   J = { file = 'subway_walk2', rot = math.pi },
+
+   k = { file = 'subway_walk3', rot = 0 },
+   K = { file = 'subway_walk3', rot = math.pi },
+
+   l = { file = 'subway_walk_edge', rot = 0 },
+   L = { file = 'subway_walk_edge', rot = math.pi },
+
+   m = { file = 'subway_pillar', rot = 0, passable = false },
+   M = { file = 'subway_pillar', rot = math.pi / 2, passable = false },
+   n = { file = 'subway_pillar', rot = math.pi, passable = false },
+   N = { file = 'subway_pillar', rot = math.pi * 3 / 2, passable = false },
+
+   o = { file = 'tracks', rot = 0, passable = false },
+   O = { file = 'tracks', rot = math.pi / 2, passable = false },
+   p = { file = 'tracks', rot = math.pi, passable = false },
+   P = { file = 'tracks', rot = math.pi * 3 / 2, passable = false },
 }
 
 local Tile = Class{
