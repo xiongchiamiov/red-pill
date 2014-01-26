@@ -4,7 +4,7 @@ Tile = require 'Entities.tile'
 local Monster = Class{
    __includes = {Character};
    init = function(self, x, y)
-      self.position = Vector(x, y)
+      self:setPositionFromTopLeft(x, y)
       self.image = love.graphics.newImage('Assets/monster11.png')
       self:addBoundingBox()
       self.health = 3

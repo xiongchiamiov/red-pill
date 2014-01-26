@@ -6,10 +6,7 @@ local Player = Class{
       if self.player then
          print("ERR: player already created!!")
       end
-      -- self.position is hardcoded. What we really want is something passed
-      -- in from the level that says the player's starting position (and
-      -- that can be fairly easily done)
-      self.position = Vector(x, y)
+      self:setPositionFromTopLeft(x, y)
       self.image = love.graphics.newImage('Assets/player.png')
       self.direction = Vector(0, 0) -- Start off standing still.
       self:addBoundingBox()

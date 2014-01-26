@@ -52,6 +52,9 @@ local Tile = Class{
    draw = function(self, time)
       if self.image then
          love.graphics.draw(self.image, self.position.x, self.position.y, self.rot, 1, 1, self.SIZE / 2, self.SIZE / 2)
+         if DEBUG and self.boundingBox ~= nil then
+            self.boundingBox:draw('fill')
+         end
       end
    end;
 }

@@ -1,5 +1,6 @@
 HardonCollider = require 'HardonCollider'
 
+Tile = require 'Entities.tile'
 Character = require 'Entities.character'
 Missile = require 'Entities.missile'
 Monster = require 'Entities.monster'
@@ -7,6 +8,8 @@ Player = require 'Entities.player'
 Level = require 'Entities.level'
 
 local play = {}
+
+DEBUG = false
 
 function play:enter()
    time = 0
