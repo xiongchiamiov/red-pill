@@ -3,7 +3,8 @@ Tile = require 'Entities.tile'
 local Level = Class{
    MAP_NAMES = {
       "demo",
-      "1"
+      "1",
+      "subway",
    };
    init = function(self, mapIndex)
       mapName = self.MAP_NAMES[mapIndex]
