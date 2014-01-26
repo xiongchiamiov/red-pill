@@ -6,6 +6,7 @@ Missile = require 'Entities.Weapons.missile'
 Civilian = require 'Entities.civilian'
 Monster = require 'Entities.monster'
 Pill = require 'Entities.pill'
+Exit = require 'Entities.exit'
 Player = require 'Entities.player'
 Level = require 'Entities.level'
 Text = require 'Entities.text'
@@ -22,8 +23,9 @@ local buttonPressing = {
 DEBUG = false
 MAX_PILL_EFFECTIVENESS = 11
 
-function play:enter()
+function play:enter(self, levelNumber)
    time = 0
+   currentLevel = levelNumber
 
    -- Loading...
    Collider = HardonCollider(100, collision_start, collision_stop)
@@ -31,7 +33,7 @@ function play:enter()
    -- Set player to nil just in case we're loading back in. Level constructor
    -- will make Player.player again
    Player.player = nil
-   level = Level(1)
+   level = Level(currentLevel)
    player = Player.player
    characters = level.characters
    texts = level.texts

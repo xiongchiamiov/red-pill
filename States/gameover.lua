@@ -18,14 +18,14 @@ function gameover:keypressed(key)
    if key == 'q' then
       love.event.push('quit')
    elseif key == 'r' then
-      Gamestate.switch(play)
+      Gamestate.switch(play, 1)
    end
 end
 
 function gameover:mousepressed(x, y, button)
    if button == "l" then
       if x > 75 and x < 275 and y > 475 and y < 535 then
-         Gamestate.switch(play)
+         Gamestate.switch(play, 1)
       end
    end
 end

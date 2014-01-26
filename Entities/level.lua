@@ -60,6 +60,8 @@ local Level = Class{
                   char = Civilian(posX, posY)
                elseif c == 'p' then
                   char = Pill(posX, posY)
+               elseif c == 'x' then
+                  char = Exit(posX, posY)
                elseif c ~= ' ' then
                   print("WARN: unknown character tile " .. key)
                end

@@ -8,6 +8,6 @@ gameover = require 'States.gameover'
 
 function love.load()
    Gamestate.registerEvents()
-   Gamestate.switch(play)
+   Gamestate.switch(play, 1)
 end
 
