@@ -28,7 +28,7 @@ local Pill = Class{
        if not sanityEnabled then
           sanityEnabled = true
        else
-          Player.player.sanity = Player.player.sanity + PILL_INCREASE_SANITY
+          Player.player.sanity = math.min(Player.player.sanity + PILL_INCREASE_SANITY, 110)
        end
        self.health = 0
        return 0
