@@ -1,5 +1,7 @@
 local image = love.graphics.newImage('Assets/pill_color.png')
 
+local PILL_INCREASE_SANITY = 60
+
 local Pill = Class{
    init = function(self, x, y)
       self.position = Vector(
@@ -23,6 +25,7 @@ local Pill = Class{
    end;
 
     effect = function(self)
+       Player.player.sanity = Player.player.sanity + PILL_INCREASE_SANITY
        redPillEffectiveness = MAX_PILL_EFFECTIVENESS
        self.health = 0
        return 0
