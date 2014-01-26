@@ -25,6 +25,11 @@ local Player = Class{
    checkCollisions = function(self)
       for i, character in ipairs(characters) do
          if self.boundingBox:collidesWith(character.boundingBox) then
+            if DEBUG then
+               print(string.format('Hit while at (%s, %s) by enemy at (%s, %s)',
+                  self.position.x, self.position.y,
+                  character.position.x, character.position.y))
+            end
             self.health = self.health + character:effect()
          end
       end
