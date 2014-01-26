@@ -1,11 +1,25 @@
 Player = require 'Entities.player'
 Tile = require 'Entities.tile'
 
+local imgs = {
+   love.graphics.newImage('Assets/monster1.png'),
+   love.graphics.newImage('Assets/monster2.png'),
+   love.graphics.newImage('Assets/monster3.png'),
+   love.graphics.newImage('Assets/monster4.png'),
+   love.graphics.newImage('Assets/monster5.png'),
+   love.graphics.newImage('Assets/monster6.png'),
+   love.graphics.newImage('Assets/monster7.png'),
+   love.graphics.newImage('Assets/monster8.png'),
+   love.graphics.newImage('Assets/monster9.png'),
+   love.graphics.newImage('Assets/monster10.png'),
+   love.graphics.newImage('Assets/monster11.png')
+}
+
 local Monster = Class{
    __includes = {Character};
    init = function(self, x, y)
       self:setPositionFromTopLeft(x, y)
-      self.image = love.graphics.newImage('Assets/monster11.png')
+      self.image = imgs[11]
       self:addBoundingBox()
       self.health = 3
       self.damage = 1
