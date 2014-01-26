@@ -1,4 +1,5 @@
 Tile = require 'Entities.tile'
+Fireball = require 'Entities.fireball'
 
 local Player = Class{
    __includes = {Character};
@@ -11,6 +12,7 @@ local Player = Class{
       self.direction = Vector(0, 0) -- Start off standing still.
       self:addBoundingBox()
       self.health = 10
+      self.abilities = { fireball = 1 }
 
       Player.player = self
    end;
@@ -31,7 +33,7 @@ local Player = Class{
    fire = function(self, targetX, targetY)
       local target = Vector(targetX, targetY)
       local direction = target - self.position
-      return Missile(self.position.x, self.position.y - Tile.SIZE, direction)
+      return Fireball(self.position.x, self.position.y - Tile.SIZE, direction, self.abilities.fireball)
    end;
    MOVE_DISTANCE = 4;
    player = nil;
