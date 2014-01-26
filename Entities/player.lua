@@ -14,6 +14,7 @@ local Player = Class{
       self.health = 10
       self.sanity = 30
       self.abilities = { fireball = { class = Fireball, level = 1, lastFired = -10 } }
+      self.abilities.current = self.abilities.fireball
 
       Player.player = self
    end;
