@@ -1,4 +1,4 @@
-Missile = require 'Entities.missile'
+Missile = require 'Entities.Weapons.missile'
 
 
 printTable = require 'Util.printTable'

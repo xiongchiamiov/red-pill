@@ -1,5 +1,5 @@
 Tile = require 'Entities.tile'
-Fireball = require 'Entities.fireball'
+Fireball = require 'Entities.Weapons.fireball'
 
 local Player = Class{
    __includes = {Character};
