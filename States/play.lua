@@ -14,6 +14,7 @@ Text = require 'Entities.text'
 drawSanityMeter = require 'UI.sanityMeter'
 
 local play = {}
+sanityEnabled = false -- start out in level 1 without draining sanity
 
 -- Doesn't contain all button states, just the ones we need (like LMB)
 local buttonPressing = {
@@ -102,7 +103,9 @@ function play:draw()
    camera:detach()
 
    -- Draw UI elements here
-   drawSanityMeter()
+   if sanityEnabled then
+      drawSanityMeter()
+   end
 end
 
 function play:keypressed(key)

@@ -19,12 +19,14 @@ local Player = Class{
    end;
    
    update = function(self, dt)
-      self.sanity = self.sanity - dt * 2
+      if sanityEnabled then
+         self.sanity = self.sanity - dt * 2
 
-      if self.sanity < 0 then
-         self.sanity = 0
-         -- TODO fade to black, then switch gamestates
-         Gamestate.switch(gameover)
+         if self.sanity < 0 then
+            self.sanity = 0
+            -- TODO fade to black, then switch gamestates
+            Gamestate.switch(gameover)
+         end
       end
 
       self:move(player.direction.x, player.direction.y)
