@@ -1,4 +1,4 @@
-local imgs = {
+local img = {
    love.graphics.newImage('Assets/monster1.png'),
    love.graphics.newImage('Assets/monster2.png'),
    love.graphics.newImage('Assets/monster3.png'),
@@ -12,6 +12,21 @@ local imgs = {
    love.graphics.newImage('Assets/monster11.png')
 }
 
+-- image to pick, in 22nds
+local imgToPick = {
+   img[1], img[1], img[1], img[1], img[1],
+   img[2], img[2], img[2],
+   img[3], img[3], img[3],
+   img[4], img[4],
+   img[5], img[5],
+   img[6],
+   img[7],
+   img[8],
+   img[9],
+   img[10],
+   img[11], img[11]
+}
+
 local Monster = Class{
    __includes = {Civilian};
    init = function(self, x, y)
@@ -21,7 +36,7 @@ local Monster = Class{
 
    update = function(self, dt)
       Civilian.update(self, dt)
-      self.image = imgs[math.ceil(Player.player.sanity / 10)]
+      self.image = imgToPick[math.ceil(Player.player.sanity / 5)]
    end;
 
    moveToDestination = function(self, dt)
