@@ -29,6 +29,7 @@ local imgToPick = {
 
 local Monster = Class{
    __includes = {Civilian};
+   typ = 'monster';
    init = function(self, x, y)
       Civilian.init(self, x, y)
       self.damage = 1

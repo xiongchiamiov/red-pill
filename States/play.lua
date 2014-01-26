@@ -37,12 +37,19 @@ function play:enter(self, levelNumber)
    world = Vector(500, 500)
    -- Set player to nil just in case we're loading back in. Level constructor
    -- will make Player.player again
-   local oldSanity = nil
+   local oldPlayer
    if Player.player ~= nil then
-      oldSanity = Player.player.sanity
+      oldPlayer = Player.player
       Player.player = nil
    end
    level = Level(currentLevel)
+   if oldPlayer then
+      local p = Player.player
+      local o = oldPlayer
+      p.sanity = o.sanity
+      p.health = o.health
+      p.abilities.fireball.level = o.abilities.fireball.level
+   end
    player = Player.player
    player.sanity = oldSanity or player.sanity
    characters = level.characters
@@ -89,6 +96,8 @@ function play:update(dt)
          table.remove(characters, i)
          if character == player then
             Gamestate.switch(gameover, 'lose')
+         elseif character.typ == 'monster' then
+            Player.player.abilities.current.level = math.min(Player.player.abilities.current.level + 1, 3)
          end
       end
    end
