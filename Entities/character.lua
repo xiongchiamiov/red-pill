@@ -18,7 +18,9 @@ local Character = Class{
       if DEBUG then
          self.boundingBox:draw('fill')
       end
-      love.graphics.draw(self.image, self.position.x - Tile.SIZE / 2, self.position.y - Tile.SIZE, 0, 1, 1, Tile.SIZE / 2, Tile.SIZE)
+      if self.image ~= nil then
+         love.graphics.draw(self.image, self.position.x - Tile.SIZE / 2, self.position.y - Tile.SIZE, 0, 1, 1, Tile.SIZE / 2, Tile.SIZE)
+      end
    end;
    
    anyCollisions = function(self)

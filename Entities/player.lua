@@ -43,10 +43,16 @@ local Player = Class{
             end
             self.sanity = math.min(self.sanity + character:effect(), 110)
          end
+         local nearness = self.position - character.position
+         if math.abs(nearness.x) < 20 and 
+            math.abs(nearness.y) < 20 then
+            self.sanity = math.min(self.sanity + character:effect(), 110)
+         end
       end
    end;
    
    effect = function(self)
+      return 0
    end;
 
    fire = function(self, targetX, targetY)
