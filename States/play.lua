@@ -2,7 +2,7 @@ HardonCollider = require 'HardonCollider'
 
 Tile = require 'Entities.tile'
 Character = require 'Entities.character'
-Missile = require 'Entities.missile'
+Missile = require 'Entities.Weapons.missile'
 Monster = require 'Entities.monster'
 Player = require 'Entities.player'
 Level = require 'Entities.level'
