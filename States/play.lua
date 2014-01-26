@@ -10,6 +10,7 @@ Level = require 'Entities.level'
 local play = {}
 
 DEBUG = false
+MAX_PILL_EFFECTIVENESS = 11
 
 function play:enter()
    time = 0
@@ -24,6 +25,7 @@ function play:enter()
    player = Player.player
    characters = level.characters
    missiles = {}
+   redPillEffectiveness = MAX_PILL_EFFECTIVENESS
 
    -- Ready!
    camera = Camera(player.position.x, player.position.y)
@@ -34,6 +36,11 @@ end
 
 function play:update(dt)
    time = time + dt
+   
+   redPillEffectiveness = redPillEffectiveness - dt
+   if redPillEffectiveness < 0 then
+      redPillEffectiveness = 0
+   end
    
    for i, character in ipairs(characters) do
       character:update(dt)

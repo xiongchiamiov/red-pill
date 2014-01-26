@@ -27,6 +27,8 @@ local Monster = Class{
    
    update = function(self, dt)
       self:checkMissiles()
+      
+      self.image = imgs[math.ceil(redPillEffectiveness)]
 
       local vecToPlayer = Player.player.position - self.position
       if vecToPlayer:len() <= Monster.VISION_DISTANCE then
