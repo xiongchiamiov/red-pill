@@ -1,12 +1,12 @@
 Missile = require 'Entities.Weapons.missile'
 
-
-printTable = require 'Util.printTable'
-
 local levels = {
-   { size = 4, damage = 1, speed = 200 },
-   { size = 6, damage = 2, speed = 250 }
+   { size = 4, damage = 1, speed = 200, colorMod = 0 },
+   { size = 6, damage = 2, speed = 250, colorMod = 10 },
+   { size = 9, damage = 4, speed = 350, colorMod = 30 }
 }
+
+local blah = -1
 
 local Fireball = Class{
    __includes = { Missile };
@@ -20,9 +20,11 @@ local Fireball = Class{
 
    draw = function(self, time)
       -- Store colors for later resetting.
-      r, g, b, a = love.graphics.getColor()
+      local r, g, b, a = love.graphics.getColor()
 
-      love.graphics.setColor(255, 187, 28, 255) -- Random orange.
+      local colorMod = levels[self.level].colorMod
+      -- colors ranging from musty to RED
+      love.graphics.setColor(225 + colorMod, 177 - colorMod * 2, 35 - colorMod, 255)
       love.graphics.circle('fill', self.position.x, self.position.y, levels[self.level].size, 100)
 
       love.graphics.setColor(r, g, b, a)
