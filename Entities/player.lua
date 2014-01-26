@@ -41,7 +41,7 @@ local Player = Class{
                   self.position.x, self.position.y,
                   character.position.x, character.position.y))
             end
-            self.health = self.health + character:effect()
+            self.sanity = self.sanity + character:effect()
          end
       end
    end;
