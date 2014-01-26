@@ -2,7 +2,8 @@ Tile = require 'Entities.tile'
 
 local Level = Class{
    MAP_NAMES = {
-      "demo"
+      "demo",
+      "1"
    };
    init = function(self, mapName)
       -- Pull in the .map file info
