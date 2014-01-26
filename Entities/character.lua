@@ -23,7 +23,8 @@ local Character = Class{
    
    anyCollisions = function(self)
       for i, character in ipairs(characters) do
-         if self.boundingBox:collidesWith(character.boundingBox) then
+         if self.boundingBox:collidesWith(character.boundingBox) and
+            character.consumable ~= true then
             return true
          end
       end

@@ -45,6 +45,11 @@ local Monster = Class{
          end
       end
    end;
+   
+   effect = function(self)
+      return -self.damage
+   end;
+
    VISION_DISTANCE = 3 * Tile.SIZE;
    MOVE_DISTANCE = 2 * Tile.SIZE;
 }

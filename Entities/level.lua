@@ -31,6 +31,8 @@ local Level = Class{
                   char = Player(posX, posY)
                elseif c == 'm' then
                   char = Monster(posX, posY)
+               elseif c == 'p' then
+                  char = Pill(posX, posY)
                elseif c ~= ' ' then
                   print("WARN: unknown character tile " .. key)
                end
