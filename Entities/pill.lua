@@ -1,19 +1,19 @@
 local image = love.graphics.newImage('Assets/pill_color.png')
 
 local Pill = Class{
-	init = function(self, x, y)
+   init = function(self, x, y)
       self.position = Vector(
          x + Tile.SIZE / 2,
          y + Tile.SIZE / 2)
-		self.image = image
-		self.boundingBox = Collider:addRectangle(x, y, Tile.SIZE, Tile.SIZE)
-		self.boundingBox.parent = self
-		self.health = 1
-		self.consumable = true
-	end;
-	
-	update = function()
-	end;
+      self.image = image
+      self.boundingBox = Collider:addRectangle(x, y, Tile.SIZE, Tile.SIZE)
+      self.boundingBox.parent = self
+      self.health = 1
+      self.consumable = true
+    end;
+
+    update = function()
+    end;
 
    draw = function(self, time)
       if DEBUG then
@@ -21,12 +21,12 @@ local Pill = Class{
       end
       love.graphics.draw(self.image, self.position.x - Tile.SIZE / 2, self.position.y - Tile.SIZE, 0, 1, 1)
    end;
-	
-	effect = function(self)
-		redPillEffectiveness = MAX_PILL_EFFECTIVENESS
-		self.health = 0
-		return 0
-	end;
+
+    effect = function(self)
+       redPillEffectiveness = MAX_PILL_EFFECTIVENESS
+       self.health = 0
+       return 0
+    end;
 }
 
 return Pill
