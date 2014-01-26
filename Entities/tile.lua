@@ -10,9 +10,9 @@ local filenameMapping = {
    D = { file = 'asphalt', rot = math.pi * 3 / 2 },
 
    e = { file = 'greybrix', rot = 0, passable = false },
-   E = { file = 'greybrix', rot = math.pi / 2, passable = false },
+   E = { file = 'greybrix', rot = math.pi / 2},
    f = { file = 'greybrix', rot = math.pi, passable = false },
-   F = { file = 'greybrix', rot = math.pi * 3 / 2, passable = false },
+   F = { file = 'greybrix', rot = math.pi * 3 / 2},
 
    g = { file = 'sidewalk', rot = 0 },
    G = { file = 'sidewalk', rot = math.pi / 2 },
