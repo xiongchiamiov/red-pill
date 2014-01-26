@@ -21,6 +21,8 @@ local Player = Class{
    end;
    
    update = function(self, dt)
+      self.sanity = self.sanity + dt * 20 * sanityDirection
+
       if self.sanity < 0 and sanityDirection == -1 then
          self.sanity = 0
          sanityDirection = 1
@@ -30,8 +32,6 @@ local Player = Class{
          self.sanity = 110
          sanityDirection = -1
       end
-
-      self.sanity = self.sanity + dt * 10 * sanityDirection
 
       self:move(player.direction.x, player.direction.y)
       self:checkCollisions()
