@@ -8,6 +8,7 @@ Monster = require 'Entities.monster'
 Pill = require 'Entities.pill'
 Player = require 'Entities.player'
 Level = require 'Entities.level'
+Text = require 'Entities.text'
 
 drawSanityMeter = require 'UI.sanityMeter'
 
@@ -33,6 +34,7 @@ function play:enter()
    level = Level("demo")
    player = Player.player
    characters = level.characters
+   texts = level.texts
    missiles = {}
    redPillEffectiveness = MAX_PILL_EFFECTIVENESS
 
@@ -89,6 +91,10 @@ function play:draw()
    camera:move(dx / 2, dy / 2)
 
    level:draw()
+   for i, text in ipairs(texts) do
+      text:draw()
+   end
+   
    for i, character in ipairs(characters) do
       character:draw()
    end

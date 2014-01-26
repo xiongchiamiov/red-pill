@@ -16,6 +16,28 @@ local Level = Class{
             self.map[lineNum][i] = Tile(c, (i - 1) * 30, (lineNum - 1) * 30)
          end
       end
+      
+      -- Pull in the .text file info
+      self.texts = {}
+      local textBodies = dofile('Levels/' .. mapName .. '.text-bodies')
+      local lineNum = 0
+      for line in io.lines("Levels/" .. mapName .. ".texts") do
+         lineNum = lineNum + 1
+         for i = 1, #line do
+            local c = line:sub(i,i)
+            local posX, posY = (i - 1) * 30, (lineNum - 1) * 30
+            local text = {}
+            if c ~= ' ' then
+               textBody = textBodies[c]
+               if textBody == nil then
+                  print("WARN: unknown text index " .. c)
+               else
+                  text = Text(posX, posY, textBody)
+                  table.insert(self.texts, text)
+               end
+            end
+         end
+      end
 
       -- Pull in the .characters file info
       self.characters = {}
