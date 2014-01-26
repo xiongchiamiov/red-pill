@@ -37,9 +37,14 @@ function play:enter(self, levelNumber)
    world = Vector(500, 500)
    -- Set player to nil just in case we're loading back in. Level constructor
    -- will make Player.player again
-   Player.player = nil
+   local oldSanity = nil
+   if Player.player ~= nil then
+      oldSanity = Player.player.sanity
+      Player.player = nil
+   end
    level = Level(currentLevel)
    player = Player.player
+   player.sanity = oldSanity or player.sanity
    characters = level.characters
    texts = level.texts
    missiles = {}

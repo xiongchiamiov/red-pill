@@ -41,7 +41,7 @@ local Player = Class{
                   self.position.x, self.position.y,
                   character.position.x, character.position.y))
             end
-            self.sanity = self.sanity + character:effect()
+            self.sanity = math.min(self.sanity + character:effect(), 110)
          end
       end
    end;
