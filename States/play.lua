@@ -34,7 +34,6 @@ function play:enter()
    player = Player.player
    characters = level.characters
    missiles = {}
-   redPillEffectiveness = MAX_PILL_EFFECTIVENESS
 
    -- Ready!
    camera = Camera(player.position.x, player.position.y)
@@ -57,11 +56,6 @@ function play:update(dt)
       end
    end
 
-   redPillEffectiveness = redPillEffectiveness - dt
-   if redPillEffectiveness < 1 then
-      redPillEffectiveness = 1
-   end
-   
    for i, character in ipairs(characters) do
       character:update(dt)
       if character.health <= 0 then

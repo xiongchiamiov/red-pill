@@ -15,16 +15,15 @@ local imgs = {
 local Monster = Class{
    __includes = {Civilian};
    init = function(self, x, y)
-		Civilian.init(self, x, y)
+      Civilian.init(self, x, y)
       self.damage = 1
    end;
-   
+
    update = function(self, dt)
-		Civilian.update(self, dt)
-      
-      self.image = imgs[math.ceil(redPillEffectiveness)]
+      Civilian.update(self, dt)
+      self.image = imgs[math.ceil(Player.player.sanity / 10)]
    end;
-   
+
    moveToDestination = function(self, dt)
       local vecToPlayer = Player.player.position - self.position
       if vecToPlayer:len() <= Monster.VISION_DISTANCE then
