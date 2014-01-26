@@ -25,7 +25,11 @@ local Pill = Class{
    end;
 
     effect = function(self)
-       Player.player.sanity = Player.player.sanity + PILL_INCREASE_SANITY
+       if not sanityEnabled then
+          sanityEnabled = true
+       else
+          Player.player.sanity = Player.player.sanity + PILL_INCREASE_SANITY
+       end
        self.health = 0
        return 0
     end;
