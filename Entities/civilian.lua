@@ -13,15 +13,8 @@ local Civilian = Class{
    
    update = function(self, dt)
       self:checkMissiles()
-		
-		local movementDirection = self.destination - self.position
-		local newLocation = movementDirection:normalized() * self.MOVE_DISTANCE * dt
-		local movedSuccessfully = self:move(newLocation.x, newLocation.y)
-		if (math.abs(movementDirection.x) < 2 and math.abs(movementDirection.y) < 2)
-		or not movedSuccessfully then
-			self.destination = self:randomNearbyPoint()
-		end
-   end;
+		self:moveToDestination(dt)
+	end;
    
    checkMissiles = function(self)
       for i, missile in ipairs(missiles) do
@@ -30,6 +23,16 @@ local Civilian = Class{
             table.remove(missiles, i)
          end
       end
+   end;
+	
+	moveToDestination = function(self, dt)
+		local movementDirection = self.destination - self.position
+		local newLocation = movementDirection:normalized() * self.MOVE_DISTANCE * dt
+		local movedSuccessfully = self:move(newLocation.x, newLocation.y)
+		if (math.abs(movementDirection.x) < 2 and math.abs(movementDirection.y) < 2)
+		or not movedSuccessfully then
+			self.destination = self:randomNearbyPoint()
+		end
    end;
 	
 	randomNearbyPoint = function(self)

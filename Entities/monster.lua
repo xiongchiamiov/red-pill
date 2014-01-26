@@ -23,11 +23,15 @@ local Monster = Class{
 		Civilian.update(self, dt)
       
       self.image = imgs[math.ceil(redPillEffectiveness)]
-
+   end;
+   
+   moveToDestination = function(self, dt)
       local vecToPlayer = Player.player.position - self.position
       if vecToPlayer:len() <= Monster.VISION_DISTANCE then
          vecToPlayer = vecToPlayer:normalize_inplace() * Monster.MOVE_DISTANCE * dt
          self:move(vecToPlayer.x, vecToPlayer.y)
+      else
+         Civilian.moveToDestination(self, dt)
       end
    end;
 }
