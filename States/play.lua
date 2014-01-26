@@ -18,7 +18,11 @@ sanityEnabled = false -- start out in level 1 without draining sanity
 
 -- Doesn't contain all button states, just the ones we need (like LMB)
 local buttonPressing = {
-   lmb = false
+   lmb = false,
+   w = false,
+   a = false,
+   s = false,
+   d = false
 }
 
 DEBUG = false
@@ -49,6 +53,19 @@ end
 
 function play:update(dt)
    time = time + dt
+
+   player.direction = Vector(0, 0)
+   if buttonPressing.w and not buttonPressing.s then
+      player.direction.y = -Player.MOVE_DISTANCE
+   elseif buttonPressing.s and not buttonPressing.w then
+      player.direction.y = Player.MOVE_DISTANCE
+   end
+
+   if buttonPressing.d and not buttonPressing.a then
+      player.direction.x = Player.MOVE_DISTANCE
+   elseif buttonPressing.a and not buttonPressing.d then
+      player.direction.x = -Player.MOVE_DISTANCE
+   end
 
    -- Fire missiles if possible and LMB is being held
    if buttonPressing.lmb == true then
@@ -110,13 +127,13 @@ end
 
 function play:keypressed(key)
    if key == 'w' then
-      player.direction.y = player.direction.y - Player.MOVE_DISTANCE
+      buttonPressing.w = true
    elseif key == 's' then
-      player.direction.y = player.direction.y + Player.MOVE_DISTANCE
+      buttonPressing.s = true
    elseif key == 'd' then
-      player.direction.x = player.direction.x + Player.MOVE_DISTANCE
+      buttonPressing.d = true
    elseif key == 'a' then
-      player.direction.x = player.direction.x - Player.MOVE_DISTANCE
+      buttonPressing.a = true
    elseif key == 'q' then
        love.event.push('quit')
    end
@@ -124,13 +141,13 @@ end
 
 function play:keyreleased(key)
    if key == 'w' then
-      player.direction.y = player.direction.y + Player.MOVE_DISTANCE
+      buttonPressing.w = false
    elseif key == 's' then
-      player.direction.y = player.direction.y - Player.MOVE_DISTANCE
+      buttonPressing.s = false
    elseif key == 'd' then
-      player.direction.x = player.direction.x - Player.MOVE_DISTANCE
+      buttonPressing.d = false
    elseif key == 'a' then
-      player.direction.x = player.direction.x + Player.MOVE_DISTANCE
+      buttonPressing.a = false
    end
 end
 

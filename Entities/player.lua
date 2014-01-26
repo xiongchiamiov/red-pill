@@ -4,7 +4,7 @@ Fireball = require 'Entities.Weapons.fireball'
 local Player = Class{
    __includes = {Character};
    init = function(self, x, y)
-      if self.player then
+      if self.player ~= nil then
          print("ERR: player already created!!")
       end
       self:setPositionFromTopLeft(x, y)
