@@ -5,11 +5,15 @@ local gameover = {}
 function gameover:init()
 end
 
+function gameover:enter(self, result)
+   resultText = 'You ' .. result .. '!'
+end
+
 function gameover:update(dt)
 end
 
 function gameover:draw()
-   love.graphics.print('Game Over', 100, 300)
+   love.graphics.print(resultText, 100, 300)
    love.graphics.rectangle('line', 75, 475, 200, 60)
    love.graphics.print('Play again? Click Here', 100, 500)
 end

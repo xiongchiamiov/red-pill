@@ -20,8 +20,12 @@ local Exit = Class{
    end;
 
    effect = function(self)
-      Gamestate.switch(play, currentLevel + 1)
-      self.health = 0
+      local newLevel = currentLevel + 1
+      if newLevel > #Level.MAP_NAMES then
+         Gamestate.switch(gameover, 'win')
+      else
+         Gamestate.switch(play, newLevel)
+      end
       return 0
    end;
 }

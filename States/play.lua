@@ -65,7 +65,7 @@ function play:update(dt)
       if character.health <= 0 then
          table.remove(characters, i)
          if character == player then
-            Gamestate.switch(gameover)
+            Gamestate.switch(gameover, 'lose')
          end
       end
    end

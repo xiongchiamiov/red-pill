@@ -24,7 +24,7 @@ local Player = Class{
       if self.sanity < 0 then
          self.sanity = 0
          -- TODO fade to black, then switch gamestates
-         Gamestate.switch(gameover)
+         Gamestate.switch(gameover, 'lose')
       end
 
       self:move(player.direction.x, player.direction.y)
