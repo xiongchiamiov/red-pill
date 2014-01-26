@@ -41,13 +41,13 @@ local Character = Class{
    end;
    
    move = function(self, x, y)
-      local previousPosition = player.position:clone()
+      local previousPosition = self.position:clone()
       
       self.position.x = self.position.x + x
       self.position.y = self.position.y + y
       self.boundingBox:moveTo(self.position.x, self.position.y)
       if self:anyCollisions() then
-         player.position = previousPosition
+         self.position = previousPosition
          self.boundingBox:moveTo(previousPosition.x, previousPosition.y)
       end
    end;
