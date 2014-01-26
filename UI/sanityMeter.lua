@@ -32,6 +32,9 @@ local draw = function(self)
    local visibleSlices = math.ceil(SLICE_COUNT * percent)
 
    local r, g, b, a = love.graphics.getColor()
+   -- Draw a circle underneath so that it's completely opaque
+   love.graphics.setColor(0, 0, 0, 255)
+   love.graphics.circle("fill", POSITION.x, POSITION.y, RADIUS, RADIUS)
    love.graphics.setColor(255 * redPercent, 255 * greenPercent, 0, 255)
 
    for i = 1, visibleSlices do
