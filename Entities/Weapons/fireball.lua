@@ -1,12 +1,10 @@
 Missile = require 'Entities.Weapons.missile'
 
 local levels = {
-   { size = 4, damage = 1, speed = 200, colorMod = 0 },
-   { size = 6, damage = 2, speed = 250, colorMod = 10 },
-   { size = 9, damage = 4, speed = 350, colorMod = 30 }
+   { size = 4, damage = 1, speed = 200, colorMod = 0, cooldown = 0.7 },
+   { size = 6, damage = 2, speed = 250, colorMod = 10, cooldown = 0.4 },
+   { size = 9, damage = 4, speed = 350, colorMod = 30, cooldown = 0.2 }
 }
-
-local blah = -1
 
 local Fireball = Class{
    __includes = { Missile };
@@ -28,6 +26,10 @@ local Fireball = Class{
       love.graphics.circle('fill', self.position.x, self.position.y, levels[self.level].size, 100)
 
       love.graphics.setColor(r, g, b, a)
+   end;
+
+   CooldownAtLevel = function(level)
+      return levels[level].cooldown
    end;
 }
 

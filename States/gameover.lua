@@ -23,7 +23,6 @@ function gameover:keypressed(key)
 end
 
 function gameover:mousepressed(x, y, button)
-   print(x, y)
    if button == "l" then
       if x > 75 and x < 275 and y > 475 and y < 535 then
          Gamestate.switch(play)

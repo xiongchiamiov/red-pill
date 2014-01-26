@@ -115,7 +115,10 @@ function play:mousepressed(x, y, button)
    x, y = camera:mousepos()
    
    if button == "l" then
-      table.insert(missiles, player:fire(x, y))
+      m = player:fire(x, y)
+      if m ~= nil then
+         table.insert(missiles, m)
+      end
    end
 end
 
