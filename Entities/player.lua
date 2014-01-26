@@ -12,7 +12,7 @@ local Player = Class{
       self.direction = Vector(0, 0) -- Start off standing still.
       self:addBoundingBox()
       self.health = 10
-      self.abilities = { fireball = 1 }
+      self.abilities = { fireball = { class = Fireball, level = 1, lastFired = -10 } }
 
       Player.player = self
    end;
@@ -34,9 +34,15 @@ local Player = Class{
    end;
 
    fire = function(self, targetX, targetY)
+      local weapon = self.abilities.fireball
+      if weapon.class.CooldownAtLevel(weapon.level) >= time - weapon.lastFired then
+         return nil
+      end
+      weapon.lastFired = time
+
       local target = Vector(targetX, targetY)
       local direction = target - self.position
-      return Fireball(self.position.x, self.position.y - Tile.SIZE, direction, self.abilities.fireball)
+      return weapon.class(self.position.x, self.position.y - Tile.SIZE, direction, weapon.level)
    end;
    MOVE_DISTANCE = 4;
    player = nil;
