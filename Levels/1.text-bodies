@@ -9,8 +9,8 @@ return {
    h = "that I know all the shortcuts to The Prancing Pony.",
    i = "Huh, what's that?",
    j = "Oh, God!",
-   k = "Are those.. aliens?",
-   l = "They looked just like people",
+   k = "Is that.. an alien?",
+   l = "It looked just like a person",
    m = "...until I took those pills...",
 }
 
