@@ -22,12 +22,12 @@ local Player = Class{
    update = function(self, dt)
       if sanityEnabled then
          self.sanity = self.sanity - dt * 2
+      end
 
-         if self.sanity < 0 then
-            self.sanity = 0
-            -- TODO fade to black, then switch gamestates
-            Gamestate.switch(gameover, 'lose')
-         end
+      if self.sanity < 0 then
+         self.sanity = 0
+         -- TODO fade to black, then switch gamestates
+         Gamestate.switch(gameover, 'lose')
       end
 
       self:move(player.direction.x, player.direction.y)
