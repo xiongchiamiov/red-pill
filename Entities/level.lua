@@ -1,5 +1,7 @@
 Tile = require 'Entities.tile'
 
+local textBodies = {}
+
 local Level = Class{
    MAP_NAMES = {
       "1",
@@ -23,7 +25,6 @@ local Level = Class{
       
       -- Pull in the .text file info
       self.texts = {}
-      local textBodies = dofile('Levels/' .. mapName .. '.text-bodies')
       local lineNum = 0
       for line in love.filesystem.lines("Levels/" .. mapName .. ".texts") do
          lineNum = lineNum + 1
@@ -32,7 +33,7 @@ local Level = Class{
             local posX, posY = (i - 1) * Tile.SIZE, (lineNum - 1) * Tile.SIZE
             local text = {}
             if c ~= ' ' then
-               textBody = textBodies[c]
+               textBody = textBodies[mapName][c]
                if textBody == nil then
                   print("WARN: unknown text index " .. c)
                else
@@ -82,5 +83,9 @@ local Level = Class{
       end
    end;
 }
+
+for _, level in ipairs(Level.MAP_NAMES) do
+   textBodies[level] = require ('Levels.' .. level .. 'text-bodies')
+end
 
 return Level
