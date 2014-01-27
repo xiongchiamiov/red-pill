@@ -12,7 +12,7 @@ local Level = Class{
       -- Pull in the .map file info
       self.map = {}
       local lineNum = 0
-      for line in io.lines("Levels/" .. mapName .. ".map") do
+      for line in love.filesystem.lines("Levels/" .. mapName .. ".map") do
          lineNum = lineNum + 1
          self.map[lineNum] = {}
          for i = 1, #line do
@@ -25,7 +25,7 @@ local Level = Class{
       self.texts = {}
       local textBodies = dofile('Levels/' .. mapName .. '.text-bodies')
       local lineNum = 0
-      for line in io.lines("Levels/" .. mapName .. ".texts") do
+      for line in love.filesystem.lines("Levels/" .. mapName .. ".texts") do
          lineNum = lineNum + 1
          for i = 1, #line do
             local c = line:sub(i,i)
@@ -46,7 +46,7 @@ local Level = Class{
       -- Pull in the .characters file info
       self.characters = {}
       local lineNum = 0
-      for line in io.lines("Levels/" .. mapName .. ".characters") do
+      for line in love.filesystem.lines("Levels/" .. mapName .. ".characters") do
          lineNum = lineNum + 1
          for i = 1, #line do
             local c = line:sub(i,i)
